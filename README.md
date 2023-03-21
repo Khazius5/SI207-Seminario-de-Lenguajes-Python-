@@ -1,10 +1,12 @@
 # Seminario de Lenguajes, opción Python.
 
---------
-> Nombre y Apellido: Agustín Peirano.
+<div align = "center"><img src = "https://media.tenor.com/nJclFuwdP5wAAAAC/squirtle-pikachu.gif" width = "300px" /></div>
 
-> Número de legajo: 18118/7
---------
+# Alumno :pushpin:
+>**Nombre y Apellido** : Agustín Peirano.
+
+>**Número de legajo**: 18118/7
+
 
 ## Practica 1 :zap: 
 
