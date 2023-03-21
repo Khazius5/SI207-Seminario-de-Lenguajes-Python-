@@ -15,17 +15,30 @@ for i in range(0, times):
     #Se eligen numeros y operadores al azar
     number_1 = randrange(10)
     number_2 = randrange(10)
-    operators = choice(operators)
+    operator = choice(operators)
+    while (operators == "/" and number_2 == "0"):
+        number_2 = randrange(10)
+    match operator:
+        case "+":
+            math = number_1 + number_2
+        case "-":
+            math = number_1 - number_2
+        case "/":
+            math = number_1 / number_2
+        case "*":
+            math = number_1 * number_2
     #Se imprime la cuenta
-    print(f"{i+1}-- ¿Cuanto es {number_1} {operators} {number_2}?")
+    print(f"{i+1}-- ¿Cuanto es {number_1} {operator} {number_2}?")
     #Le pedimos al usuario el resultado 
-    result = input("Resultado: ")
-    #Comparamos la respuesta del usuario con el resultado de la operación
-    if int(result) == eval(f"{number_1} {operators} {number_2}"):
-        print("¡Respuesta correcta!")
+    result = int(input("Resultado: "))
+
+    if (math == result):
+        print("¡Respuesta Correcta!")
         correct_answers += 1
     else:
         print("Respuesta incorrecta")
+    #Comparamos la respuesta del usuario con el resultado de la operación
+
 
 #Al terminar toda la cantidad de cuentas por resolver. 
 #Se vuelve a tomar la fecha y hora. 
