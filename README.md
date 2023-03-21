@@ -1,5 +1,3 @@
-# Seminario de Lenguajes, opción Python.
-
 <div align = "center"><img src = "https://media.tenor.com/nJclFuwdP5wAAAAC/squirtle-pikachu.gif" width = "300px" /></div>
 
 # Alumno :pushpin:
