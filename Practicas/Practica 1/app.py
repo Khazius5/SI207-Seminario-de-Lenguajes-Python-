@@ -16,8 +16,8 @@ for i in range(0, times):
     number_1 = randrange(10)
     number_2 = randrange(10)
     operator = choice(operators)
-    while (operator == "/" and number_2 == "0"):
-        number_2 = randrange(10)
+    if (operator == "/" and number_2 == "0"):
+        number_2 = randrange(1,10)
     match operator:
         case "+":
             math = number_1 + number_2
@@ -30,7 +30,7 @@ for i in range(0, times):
     #Se imprime la cuenta
     print(f"{i+1}-- ¿Cuanto es {number_1} {operator} {number_2}?")
     #Le pedimos al usuario el resultado 
-    result = int(input("Resultado: "))
+    result = float(input("Resultado: "))
 
     if (math == result):
         print("¡Respuesta Correcta!")
