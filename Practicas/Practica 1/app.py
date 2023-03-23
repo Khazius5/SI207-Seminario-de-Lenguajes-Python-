@@ -2,7 +2,7 @@ from random import choice, randrange
 from datetime import datetime 
 
 #Operadores posibles
-operators = ["+","-","*",]
+operators = ["+","-","*","/"]
 #Cantidad de cuentas
 times = 5
 #Contador inicial de tiempo
@@ -16,7 +16,7 @@ for i in range(0, times):
     number_1 = randrange(10)
     number_2 = randrange(10)
     operator = choice(operators)
-    while (operators == "/" and number_2 == "0"):
+    while (operator == "/" and number_2 == "0"):
         number_2 = randrange(10)
     match operator:
         case "+":
