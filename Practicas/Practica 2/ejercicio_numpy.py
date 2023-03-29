@@ -15,8 +15,8 @@ def finder():
     new_text = list(filter(lambda x: x.strip(), new_text)) #Quitamos los saltos de linea de la lista generada anteriormente
     for line in new_text:
         if ('http' in line):
-                print(line)
                 print("-"*15)
+                print(line)
 
 def max():
     """La funcion max extrae la palabra más comun del archivo README"""
@@ -34,4 +34,5 @@ def start():
     finder()
     max()
 
-start()
+start() 
+print("Fin del programa")
