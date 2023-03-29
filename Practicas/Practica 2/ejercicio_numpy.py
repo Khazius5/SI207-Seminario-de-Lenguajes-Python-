@@ -5,6 +5,7 @@
 
 from README_numpy import README as numpy_text
 from collections import Counter
+import string
 
 
 def finder():
@@ -19,16 +20,17 @@ def finder():
 
 def max():
     """La funcion max extrae la palabra más comun del archivo README"""
-    max_text = numpy_text.split()
-    max_text = list(filter(lambda x: x.strip(), max_text))
-    count = Counter(max_text)
+    max_text = numpy_text.split() #Nuevamente dividimos el archivo pero esta vez en palabras
+    max_text = list(filter(lambda x: x.strip(), max_text)) #Nuevamente quitamos los espacios en blanco
+    count = Counter(max_text) 
     max_common = count.most_common()
-    if (len(max_common[0][0]) > 1):
+    if (max_common[0][0] == string.ascii_letters):
         print(f'La palabra más comun en el README de Numpy es {max_common[0][0]} ')
     else:
         print((f'La palabra más comun en el README de Numpy es: {max_common[1][0]} con un total de: {max_common[1][1]}'))
 
 def start():
+    """Ejecuta el programa con todas sus funciones"""
     finder()
     max()
 
