@@ -1,5 +1,4 @@
-ARTICLE = """ 
-título: Experiences in Developing a Distributed Agent-based 
+ARTICLE = """ título: Experiences in Developing a Distributed Agent-based
 Modeling Toolkit with Python
 resumen: Distributed agent-based modeling (ABM) on high-performance 
 computing resources provides the promise of capturing unprecedented details 

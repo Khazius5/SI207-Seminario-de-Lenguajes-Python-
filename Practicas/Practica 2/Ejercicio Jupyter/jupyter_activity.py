@@ -8,19 +8,14 @@ import string
 
 def start():
     """La función start ejecuta el programa"""
-    counter = 0
     letter = input("Ingrese una letra: ")
     if (letter in string.ascii_letters):
         print(f'Las palabras que comienzan con la letra {letter} son: ')
         for word in jupyter_text.split():
             if (word[0] == letter):
-                counter += 1
                 print(word)
     else:
-        if (letter == ' ' or letter != string.ascii_letters):
-            print("Error, no se ingreso una letra")
-    if (counter == 0):
-        print(f'No se encontraron palabras que comienzan con la letra {letter}')
+        print("Error, no se ingreso una letra")
 
 
 start()

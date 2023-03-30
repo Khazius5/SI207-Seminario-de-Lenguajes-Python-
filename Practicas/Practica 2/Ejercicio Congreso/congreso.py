@@ -14,30 +14,41 @@
 
 from evaluar import ARTICLE as art
 
-
-def start():
-    """La función start ejecuta el programa"""
-    article = art.split('\n')
-    title = article[0].split(' ')[1:]
-    if len(title) > 10:
-        print('El título tiene más de 10 palabras')
+def count_title():
+    """La funcion retorna Ok si el titulo contiene menos de 10 palabras, sino, un warning de que el titulo sobrepasa las palabras permitidas"""
+    article = art.split("resumen:")
+    title = article[0].split(" ")[2:]
+    if (len(title) <= 10):
+        print("Titulo: Ok")
     else:
-        print('título: ok')
+        print("El titulo sobrepasa las palabras permitidas")
+
+def count_overview():
+    """La funcion overview retorna la cantidad de parrafos faciles, aceptables, dificiles o muy dificiles de leer"""
+    article = art.split("resumen:")
+    overview = article[1].split(".")
     easy = 0
     acceptable = 0
     difficult = 0
     very_difficult = 0
-    for sentence in article[1:]:
-        words = sentence.split(' ')
-        if len(words) <= 12:
+    for words in overview:
+        ph = words.split(".")
+        x = ph[0].split()
+        if len(x) <= 12:
             easy += 1
-        elif len(words) <= 17:
+        elif len(x) <= 17:
             acceptable += 1
-        elif len(words) <= 25:
+        elif len(x) <= 25:
             difficult += 1
         else:
             very_difficult += 1
     print(f'Cantidad de oraciones fáciles de leer: {easy}, aceptables para leer: {acceptable}, dificil de leer: {difficult}, muy difícil de leer: {very_difficult}')
 
 
+def start():
+    """Ejecuta el programa"""
+    count_title()
+    count_overview()
+   
 start()
+
