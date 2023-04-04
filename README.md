@@ -8,4 +8,4 @@
 
 ## Practica 1 :zap: 
 
-* [Ejercicio 1](https://github.com/Khazius5/SI207-Seminario-de-Lenguajes-Python-/blob/main/Practicas/Practica%201/app.py)
+* [Ejercicio 1](https://github.com/Khazius5/SI207-Seminario-de-Lenguajes-Python-/blob/main/Practicas/Practica%201/game.py)
