@@ -50,6 +50,9 @@ def worst_student(students):
 def main():
     """Función principal"""
     students = process_studens()
+    print("---- Inciso A ----")
+    print(students)
+    print("---- Inciso B ----")
     students = average_student(students)
     print(students)
     print(f"El promedio general del curso es de {round(average_course(students), 2)}")
