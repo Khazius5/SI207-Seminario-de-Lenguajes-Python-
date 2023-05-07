@@ -70,8 +70,8 @@ layout = [
     [sg.Combo(options,key="--GEN--", size=(20,3))],
     [sg.Checkbox('Otro', default=False, key='--OTRO--', enable_events=True)],
     [sg.Input(key="--INPUT-OTRO--", disabled=True)],
-    [sg.Button("Guardar")],
-    [sg.Button("Volver")]
+    [sg.Button("Guardar", key="--GUARDAR--")],
+    [sg.Button("Cancelar", key="--CANCELAR--")]
     ]
 
 # asigno el layout a la ventana "windows"
@@ -84,18 +84,21 @@ while True:
     if evento == sg.WINDOW_CLOSED:
         break
 
-    if valores['--OTRO--'] == True:
-        window['--INPUT-OTRO--'].update(disabled=False)
+    if evento == '--OTRO--':
+        if valores['--OTRO--']:
+            window['--INPUT-OTRO--'].update(disabled=False)
+        else:
+            window['--INPUT-OTRO--'].update(disabled=True)
+            window['--INPUT-OTRO--'].update('')
         sexo = valores['--INPUT-OTRO--']
     else:
         sexo = valores['--GEN--']
 
-    if evento == "Guardar":
+    if evento == "--GUARDAR--":
         es_igual(valores["--ALIAS--"],valores['--NOMBRE--'],valores['--FECHA_NAC--'],sexo) #verifica si el alias ya existe
 
-
-    if evento == "Volver": 
-        sg.popup("Si desea conservar  los cambios presione 'Guardar'")
-    # Se lo puede enviar directamente al menu principal
+    if evento == "--CANCELAR--":
+        sg.popup("La operation fue cancelada")
+        window.close()
 
 window.close()
