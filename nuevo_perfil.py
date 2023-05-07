@@ -90,9 +90,15 @@ while True:
         else:
             window['--INPUT-OTRO--'].update(disabled=True)
             window['--INPUT-OTRO--'].update('')
-        sexo = valores['--INPUT-OTRO--']
+        sexo = ''
+        
+    if not valores['--OTRO--'] and not valores['--GEN--']:
+        sg.popup("Por favor seleccione un género")
+    elif valores['--OTRO--'] and not valores['--INPUT-OTRO--']:
+        sg.popup("Por favor ingrese el género")
     else:
-        sexo = valores['--GEN--']
+        sexo = valores['--INPUT-OTRO--'] if not valores['--GEN--'] else valores['--GEN--']
+
 
     if evento == "--GUARDAR--":
         es_igual(valores["--ALIAS--"],valores['--NOMBRE--'],valores['--FECHA_NAC--'],sexo) #verifica si el alias ya existe
