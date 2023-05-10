@@ -57,54 +57,49 @@ def es_igual(alias,nombre,fecha_nac,sexo):
 
 
 
-options = ['Masculino','Femenino']
+def main_nperfil():
+    options = ['Masculino','Femenino']
 
-layout = [
-    [sg.Text("Nick o Alias")],
-    [sg.Input(key= "--ALIAS--", size=(30,3)) ],
-    [sg.Text("Nombre")],
-    [sg.Input(key="--NOMBRE--", size=(30,3))],
-    [sg.Text("Fecha_nacimiento")],
-    [sg.Input(key="--FECHA_NAC--", size=(30,3))],
-    [sg.Text("Genero Autopercibido")],
-    [sg.Combo(options,key="--GEN--", size=(20,3))],
-    [sg.Checkbox('Otro', default=False, key='--OTRO--', enable_events=True)],
-    [sg.Input(key="--INPUT-OTRO--", disabled=True)],
-    [sg.Button("Guardar", key="--GUARDAR--")],
-    [sg.Button("Cancelar", key="--CANCELAR--")]
-    ]
+    layout = [
+        [sg.Text("Nick o Alias")],
+        [sg.Input(key= "--ALIAS--", size=(30,3)) ],
+        [sg.Text("Nombre")],
+        [sg.Input(key="--NOMBRE--", size=(30,3))],
+        [sg.Text("Fecha_nacimiento")],
+        [sg.Input(key="--FECHA_NAC--", size=(30,3))],
+        [sg.Text("Genero Autopercibido")],
+        [sg.Combo(options,key="--GEN--", size=(20,3))],
+        [sg.Checkbox('Otro', default=False, key='--OTRO--', enable_events=True)],
+        [sg.Input(key="--INPUT-OTRO--", disabled=True)],
+        [sg.Button("Guardar", key="--GUARDAR--")],
+        [sg.Button("Cancelar", key="--CANCELAR--")]
+        ]
 
-# asigno el layout a la ventana "windows"
-window = sg.Window('Nuevo perfil', layout, size=(None, None),
-                   element_justification='center', margins=(100, 100))
+    # asigno el layout a la ventana "windows"
+    window = sg.Window('Nuevo perfil', layout, size=(None, None),
+                    element_justification='center', margins=(100, 100))
 
-while True:
-    JSON = verificar_archivo()
-    evento, valores = window.read()
-    if evento == sg.WINDOW_CLOSED:
-        break
+    while True:
+        JSON = verificar_archivo()
+        evento, valores = window.read()
+        if evento == sg.WINDOW_CLOSED:
+            break
 
-    if evento == '--OTRO--':
-        if valores['--OTRO--']:
-            window['--INPUT-OTRO--'].update(disabled=False)
+        if evento == '--OTRO--':
+            if valores['--OTRO--']:
+                window['--INPUT-OTRO--'].update(disabled=False)
+            else:
+                window['--INPUT-OTRO--'].update(disabled=True)
+                window['--INPUT-OTRO--'].update('')
+            sexo = valores['--INPUT-OTRO--']
         else:
-            window['--INPUT-OTRO--'].update(disabled=True)
-            window['--INPUT-OTRO--'].update('')
-        sexo = ''
-        
-    if not valores['--OTRO--'] and not valores['--GEN--']:
-        sg.popup("Por favor seleccione un género")
-    elif valores['--OTRO--'] and not valores['--INPUT-OTRO--']:
-        sg.popup("Por favor ingrese el género")
-    else:
-        sexo = valores['--INPUT-OTRO--'] if not valores['--GEN--'] else valores['--GEN--']
+            sexo = valores['--GEN--']
 
+        if evento == "--GUARDAR--":
+            es_igual(valores["--ALIAS--"],valores['--NOMBRE--'],valores['--FECHA_NAC--'],sexo) #verifica si el alias ya existe
+            window.close()
+        if evento == "--CANCELAR--":
+            sg.popup("La operation fue cancelada")
+            window.close()
 
-    if evento == "--GUARDAR--":
-        es_igual(valores["--ALIAS--"],valores['--NOMBRE--'],valores['--FECHA_NAC--'],sexo) #verifica si el alias ya existe
-
-    if evento == "--CANCELAR--":
-        sg.popup("La operation fue cancelada")
-        window.close()
-
-window.close()
+    window.close()
